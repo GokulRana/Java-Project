@@ -2,14 +2,14 @@ import java.util.*;
 
 class Account {
     private String accountNumber;
-    private String username;
+    private String customerName;
     private String accountType;
     private double balance;
     private List<Transaction> transactionHistory;
 
-    public Account(String accountNumber, String username, String accountType) {
+    public Account(String accountNumber, String customerName, String accountType) {
         this.accountNumber = accountNumber;
-        this.username = username;
+        this.customerName = customerName;
         this.accountType = accountType;
         this.balance = 0.0;
         this.transactionHistory = new ArrayList<>();
@@ -19,8 +19,8 @@ class Account {
         return accountNumber;
     }
 
-    public String getUsername() {
-        return username;
+    public String getcustomerName() {
+        return customerName;
     }
 
     public String getAccountType() {
@@ -115,11 +115,11 @@ public class BankManagementApp {
             System.out.println("Account number already exists. Please choose a different account number.");
             return;
         }
-        System.out.print("Enter username: ");
-        String username = scanner.nextLine();
+        System.out.print("Enter customername: ");
+        String customerName = scanner.nextLine();
         System.out.print("Enter account type: ");
         String accountType = scanner.nextLine();
-        Account newAccount = new Account(accountNumber, username, accountType);
+        Account newAccount = new Account(accountNumber, customerName, accountType);
         accounts.add(newAccount);
         System.out.println("Registration successful.");
     }
@@ -130,7 +130,7 @@ public class BankManagementApp {
 
         Account loggedInAccount = findAccountByAccountNumber(accounts, accountNumber);
         if (loggedInAccount != null) {
-            System.out.println("Login successful. Welcome, " + loggedInAccount.getUsername());
+            System.out.println("Login successful. Welcome, " + loggedInAccount.getcustomerName());
             handleAccountOptions(loggedInAccount, scanner);
         } else {
             System.out.println("Account not found. Please enter a valid account number.");
@@ -159,7 +159,7 @@ public class BankManagementApp {
         System.out.println("List of all registered users:");
         for (Account account : accounts) {
             System.out.println("Account Number: " + account.getAccountNumber());
-            System.out.println("Username: " + account.getUsername());
+            System.out.println("customerName: " + account.getcustomerName());
             System.out.println("Account Type: " + account.getAccountType());
             System.out.println("Balance: $" + account.getBalance());
             System.out.println();
